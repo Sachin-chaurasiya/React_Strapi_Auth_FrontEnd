@@ -1,9 +1,37 @@
 import React from "react";
-import { Button, Card, Col, Form, Input, Row, Spin } from "antd";
+import { Button, Card, Col, Form, Input, message, Row, Spin } from "antd";
 import { useAuthContext } from "../../context/AuthContext";
+import { API, AUTH_TOKEN } from "../../constant";
+import { useState } from "react";
 
 const Profile = () => {
-  const { user, isLoading } = useAuthContext();
+  const [loading, setLoading] = useState(false);
+  const { user, isLoading, setUser } = useAuthContext();
+
+  const token = localStorage.getItem(AUTH_TOKEN);
+
+  const handleProfileUpdate = async (data) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API}/users/${user.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // set the auth token to the user's jwt
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+
+      setUser(responseData);
+    } catch (error) {
+      console.error(Error);
+      message.error("Error While Updating the Profile!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (isLoading) {
     return <Spin size="large" />;
@@ -23,6 +51,7 @@ const Profile = () => {
           website_url: user?.website_url,
           about: user?.about,
         }}
+        onFinish={handleProfileUpdate}
       >
         <Row gutter={[16, 16]}>
           <Col md={8} lg={8} sm={24} xs={24}>
@@ -142,7 +171,13 @@ const Profile = () => {
           type="primary"
           size="large"
         >
-          Save
+          {loading ? (
+            <>
+              <Spin size="small" /> Saving
+            </>
+          ) : (
+            "Save"
+          )}
         </Button>
       </Form>
     </Card>
