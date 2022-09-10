@@ -20,6 +20,7 @@ code {
     monospace;
 }
 
+/* Layout CSS */
 .ant-layout {
   background: var(--white);
 }
@@ -31,6 +32,7 @@ code {
   color: var(--white);
 }
 
+/* Header CSS */
 .header_space {
   width: 100%;
   justify-content: space-between;
@@ -42,4 +44,53 @@ code {
 }
 .header_space_brand:hover {
   color: var(--white);
+}
+
+/* Social Card CSS */
+.social_card {
+  box-shadow: 0 13px 27px -5px rgb(50 50 93 / 25%),
+    0 8px 16px -8px rgb(0 0 0 / 30%), 0 -6px 16px -6px rgb(0 0 0 / 3%);
+  border-radius: 4px;
+  background-color: bisque;
+  color: var(--text-color);
+}
+
+.social_card_space {
+  width: 100%;
+}
+.social_image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.social_button {
+  padding: 0px;
+}
+.social_button.twitter {
+  color: var(--twitter);
+}
+.social_button.linkedin {
+  color: var(--linkedin);
+}
+.social_button.github {
+  color: var(--github);
+}
+.social_button.website {
+  color: var(--website);
+}
+.social_button.gmail {
+  color: var(--gmail);
+}
+
+/* Profile Page CSS */
+.profile_page_card {
+  box-shadow: 0 13px 27px -5px rgb(50 50 93 / 25%),
+    0 8px 16px -8px rgb(0 0 0 / 30%), 0 -6px 16px -6px rgb(0 0 0 / 3%);
+  border-radius: 4px;
+}
+
+.profile_save_btn {
+  display: block;
+  margin-left: auto;
 }

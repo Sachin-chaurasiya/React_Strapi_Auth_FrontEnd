@@ -6,10 +6,12 @@ import { useEffect } from "react";
 
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const authToken = localStorage.getItem(AUTH_TOKEN);
 
   const fetchLoggedInUser = async (token) => {
+    setIsLoading(true);
     try {
       const response = await fetch(`${API}/users/me`, {
         headers: { Authorization: `${BEARER} ${token}` },
@@ -20,6 +22,8 @@ const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error(error);
       message.error("Error While Getting Logged In User Details");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -34,7 +38,9 @@ const AuthProvider = ({ children }) => {
   }, [authToken]);
 
   return (
-    <AuthContext.Provider value={{ user: userData, setUser: handleUser }}>
+    <AuthContext.Provider
+      value={{ user: userData, setUser: handleUser, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );

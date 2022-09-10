@@ -1,5 +1,15 @@
-import { Button, Card, Col, Image, Row, Space, Typography } from "antd";
-import React from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Image,
+  message,
+  Row,
+  Space,
+  Spin,
+  Typography,
+} from "antd";
+import React, { useEffect, useState } from "react";
 import {
   AiFillTwitterCircle,
   AiFillLinkedin,
@@ -8,10 +18,34 @@ import {
 
 import { CgWebsite } from "react-icons/cg";
 import { SiGmail } from "react-icons/si";
-import { AVATAR_API } from "../../constant";
-import "./SocialCards.css";
+import { API, AVATAR_API } from "../../constant";
 
-const SocialCards = ({ profiles = [] }) => {
+const SocialCards = () => {
+  const [profiles, setProfiles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchProfiles = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${API}/users`);
+      const data = await response.json();
+      setProfiles(data ?? []);
+    } catch (error) {
+      console.error(error);
+      message.error("Error while fetching profiles!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfiles();
+  }, []);
+
+  if (isLoading) {
+    return <Spin size="large" />;
+  }
+
   return (
     <Row gutter={[32, 32]}>
       {profiles.map((profile, index) => (
