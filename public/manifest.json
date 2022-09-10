@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Social Cards",
+  "name": "Create your social card and share it with the world",
   "icons": [
     {
       "src": "favicon.ico",
