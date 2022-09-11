@@ -25,6 +25,7 @@ const Profile = () => {
       const responseData = await response.json();
 
       setUser(responseData);
+      message.success("Data saved successfully!");
     } catch (error) {
       console.error(Error);
       message.error("Error While Updating the Profile!");
