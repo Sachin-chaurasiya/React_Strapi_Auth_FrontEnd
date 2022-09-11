@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Form, Input, message, Row, Spin } from "antd";
 import { useAuthContext } from "../../context/AuthContext";
-import { API, AUTH_TOKEN } from "../../constant";
+import { API } from "../../constant";
 import { useState } from "react";
 import { getToken } from "../../helpers";
 

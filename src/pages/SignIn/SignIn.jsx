@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import useScreenSize from "../../hooks/useScreenSize";
-import { API, AUTH_TOKEN } from "../../constant";
+import { API } from "../../constant";
 import { setToken } from "../../helpers";
 
 const SignIn = () => {
