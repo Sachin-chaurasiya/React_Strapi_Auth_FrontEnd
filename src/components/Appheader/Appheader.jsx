@@ -11,7 +11,7 @@ const AppHeader = () => {
 
   const handleLogout = () => {
     removeToken();
-    navigate("/signin");
+    navigate("/signin", { replace: true });
   };
 
   return (

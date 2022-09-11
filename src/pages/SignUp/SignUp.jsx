@@ -51,7 +51,7 @@ const SignUp = () => {
 
         message.success(`Welcome to Social Cards ${data.user.username}!`);
 
-        navigate("/profile");
+        navigate("/profile", { replace: true });
       }
     } catch (error) {
       console.error(error);

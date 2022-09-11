@@ -55,7 +55,7 @@ const SignIn = () => {
 
         message.success(`Welcome back ${data.user.username}!`);
 
-        navigate("/profile");
+        navigate("/profile", { replace: true });
       }
     } catch (error) {
       console.error(error);
