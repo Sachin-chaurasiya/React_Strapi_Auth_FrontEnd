@@ -12,7 +12,7 @@ const AppRoutes = () => {
       <Route path="/" element={<SocialCards />} />
       <Route
         path="/profile"
-        element={token ? <Profile /> : <Navigate to="/" />}
+        element={token ? <Profile /> : <Navigate to="/signin" />}
       />
       <Route path="/signin" element={<SignIn />} />
     </Routes>
