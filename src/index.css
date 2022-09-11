@@ -94,3 +94,16 @@ code {
   display: block;
   margin-left: auto;
 }
+
+.login_submit_btn {
+  display: block;
+  width: 100%;
+}
+
+.alert_error {
+  margin-bottom: 8px;
+}
+
+.form_help_text {
+  text-align: center;
+}

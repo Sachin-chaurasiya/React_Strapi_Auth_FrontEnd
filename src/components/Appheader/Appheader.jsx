@@ -23,7 +23,7 @@ const AppHeader = () => {
           </>
         ) : (
           <>
-            <Button className="auth_button_login" href="/" type="link">
+            <Button className="auth_button_login" href="/signin" type="link">
               Login
             </Button>
             <Button className="auth_button_signUp" href="/" type="primary">
