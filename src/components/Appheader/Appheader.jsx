@@ -4,13 +4,14 @@ import { CgWebsite } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import { AUTH_TOKEN } from "../../constant";
 import { useAuthContext } from "../../context/AuthContext";
+import { removeToken } from "../../helpers";
 
 const AppHeader = () => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem(AUTH_TOKEN);
+    removeToken();
     navigate("/signin");
   };
 

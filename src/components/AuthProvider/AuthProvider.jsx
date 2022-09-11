@@ -3,12 +3,13 @@ import { AuthContext } from "../../context/AuthContext";
 import { message } from "antd";
 import { API, AUTH_TOKEN, BEARER } from "../../constant";
 import { useEffect } from "react";
+import { getToken } from "../../helpers";
 
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const authToken = localStorage.getItem(AUTH_TOKEN);
+  const authToken = getToken();
 
   const fetchLoggedInUser = async (token) => {
     setIsLoading(true);

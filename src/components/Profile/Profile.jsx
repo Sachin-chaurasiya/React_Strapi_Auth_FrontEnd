@@ -3,12 +3,11 @@ import { Button, Card, Col, Form, Input, message, Row, Spin } from "antd";
 import { useAuthContext } from "../../context/AuthContext";
 import { API, AUTH_TOKEN } from "../../constant";
 import { useState } from "react";
+import { getToken } from "../../helpers";
 
 const Profile = () => {
   const [loading, setLoading] = useState(false);
   const { user, isLoading, setUser } = useAuthContext();
-
-  const token = localStorage.getItem(AUTH_TOKEN);
 
   const handleProfileUpdate = async (data) => {
     setLoading(true);
@@ -18,7 +17,7 @@ const Profile = () => {
         headers: {
           "Content-Type": "application/json",
           // set the auth token to the user's jwt
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getToken()}`,
         },
         body: JSON.stringify(data),
       });
